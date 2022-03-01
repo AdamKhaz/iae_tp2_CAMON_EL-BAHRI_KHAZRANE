@@ -31,4 +31,6 @@ void affichePile ( Pile  p ) ;
 /* Libère la mémoire */
 void freePile( Pile p);
 
+void test_pile() ;
+
 # endif
