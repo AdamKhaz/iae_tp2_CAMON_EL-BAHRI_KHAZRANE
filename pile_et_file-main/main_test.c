@@ -1,5 +1,5 @@
 #include "pile_char.h"
-#include "file_struct.h"
+//#include "file_struct.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,12 +13,12 @@
    char s4[] = "4"; 
 
    Pile p = NULL; 
-   empile(&p,s1); 
-   empile(&p,s2); 
-   empile(&p,s3); 
+   empile(p,s1); 
+   empile(p,s2); 
+   empile(p,s3); 
    affichePile(p); 
-   char* d = depile(&p); 
-   empile(&p,s4); 
+   char* d = depile(p); 
+   empile(p,s4); 
    affichePile(p); 
   
    printf("old head %s new one %s\n",d,tetePile(p)); 
