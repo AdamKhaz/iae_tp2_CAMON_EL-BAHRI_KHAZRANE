@@ -52,6 +52,6 @@ void affichePile ( Pile  p ){
 void freePile( Pile p){
 
     while(p!=NULL){                //tant que le sommet n'est pas vide/nul
-        p= depiler(p);        //on dépile le sommet jusqu'à la fin de la pile
+        depiler(p);        //on dépile le sommet jusqu'à la fin de la pile
     }
 }
