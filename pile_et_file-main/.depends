@@ -1,0 +1,3 @@
+main.o: main.c pile_char.h file_struct.h experiment.h xmlReader.h \
+  schedule.h
+xmlReader.o: xmlReader.c xmlReader.h
