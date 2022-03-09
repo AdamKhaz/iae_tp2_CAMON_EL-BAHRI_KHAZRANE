@@ -15,11 +15,11 @@ int estPileVide ( Pile p ) ;
 
 /* Ajoute l'element donn' en tete de la pile */
 
-void empile ( Pile p , char* data ) ;
+void empile ( Pile*  p , char* data ) ;
 
 /* Supprime le premier element de la pile et retourne sa valeur -1 si
    la pile est vide */
-char* depile ( Pile p ) ;
+char* depile ( Pile*  p ) ;
 
 /* Retourne la valeur du premier element de la pile sans le supprimer
 retourne -1 si la pile est vide */
@@ -29,8 +29,6 @@ char* tetePile ( Pile p ) ;
 void affichePile ( Pile  p ) ;
 
 /* Libère la mémoire */
-void freePile( Pile p);
-
-void test_pile() ;
+void freePile( Pile* p);
 
 # endif

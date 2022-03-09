@@ -1,57 +1,55 @@
-#include "pile_char.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
+#include "pile_char.h"
 
-int estPileVide ( Pile p ){
-    if(!p){
-        printf("LA PILE EST VIDE! \n");
+int estPileVide(Pile p){
+    if (p == NULL){
         return 1;
     }
     return 0;
 }
 
-void empile ( Pile p , char* data ){
-    Elem_pile* debut= malloc(sizeof(Pile));
-    debut->data=data;                         
-    debut->precedent= p;
-    p=debut;
-                     
+void empile (Pile* p ,char* data){
+    Elem_pile* sommet = malloc(sizeof(Elem_pile));
+    //on fait les liaisons
+    sommet->data = data;
+    sommet->precedent = *p;
+    *p = sommet;
 }
-char* depile(Pile p){
 
-    if (p == NULL){                        //si pas de sommet
-        exit(EXIT_FAILURE);                     //le programme s'arrete
-    }
-    Elem_pile* elemSuiv=NULL;
-    elemSuiv = p->precedent;                 //notre nouveau sommet va etre égale au prochain sommet de notre sommet courant          
-    free(p);                               //on désalloue la memoire de notre ancien sommet
-    p = elemSuiv;
-    return elemSuiv->data;
-}
-char* tetePile ( Pile p ){
-    if(!p){
+char* depile (Pile* p){
+    if (estPileVide(*p)==1)  //retourne la valeur -1 si la pile est vide 
         exit(EXIT_FAILURE);
-    }
+    Pile elt_suiv = malloc(sizeof(Elem_pile));
+    elt_suiv = (*p)->precedent;              //on définit un élément temporaire comme étant le sommet de la pile
+    free(*p);                       //puis on free "l'ancien" sommet
+    *p = elt_suiv;
+    return (*p)->data;
+}
+
+char* tetePile (Pile p){
+    if (estPileVide(p)==1)  //retourne la valeur -1 si la pile est vide 
+        exit(EXIT_FAILURE); //on ne peut pas return -1 vu que la fonction renvoit un char*
+
     return p->data;
 }
-void affichePile ( Pile  p ){
 
-    Elem_pile* affiche = p;
+void affichePile (Pile p){
 
-    while(affiche!=NULL){              //tant que sommet non vide
-        printf(" ------- \n");
-        printf("| %s |\n",affiche->data); //affiche la valeur contenue dans le sommet
-        affiche=affiche->precedent;             //incremente le sommet au sommet suivant
+    printf("Pile :\n");
+    Elem_pile* elt_temp = p; //on définit un pointeur temporaire vers le haut de la pile afin de ne pas directement le faire avec le pointeur p
+    while(elt_temp!=NULL){
+        printf("%s\n",tetePile(elt_temp));
+        elt_temp = elt_temp->precedent;
+        //printf("%s\n",tetePile(elt_temp)); //affiche le dernier élément de la pile
     }
-    if (affiche==NULL && p==NULL){       //si pile vide
-        printf(" ------- \n");
-        printf("LA PILE A BIEN ETE DEPILER GG!\n"); //preuve que la pile à bien été vidée
+    if (elt_temp==NULL && p==NULL){
+        printf("Pile dépilée !\n");
     }
 }
-void freePile( Pile p){
 
-    while(p!=NULL){                //tant que le sommet n'est pas vide/nul
-        depiler(p);        //on dépile le sommet jusqu'à la fin de la pile
+void freePile(Pile *p){
+    while(p!=NULL){
+        depile(p);
     }
 }
