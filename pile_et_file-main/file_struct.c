@@ -1,4 +1,8 @@
 #include "file_struct.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 
 QueueS* creerFileStruct()
 {
@@ -58,7 +62,7 @@ struct_t teteFileStruct(QueueS p)
     if(estFileStructVide(p)==1)
     {
         printf("La file est vide\n");
-        return;
+        exit(EXIT_FAILURE);
     }
     else
     {
