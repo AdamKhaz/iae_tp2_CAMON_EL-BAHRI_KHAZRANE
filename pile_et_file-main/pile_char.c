@@ -48,8 +48,10 @@ void affichePile (Pile p){
     }
 }
 
-void freePile(Pile *p){
+void freePile(Pile p){
     while(p!=NULL){
-        depile(p);
+        Pile temp = p;
+        p = temp->precedent;
+        free(temp);
     }
 }
