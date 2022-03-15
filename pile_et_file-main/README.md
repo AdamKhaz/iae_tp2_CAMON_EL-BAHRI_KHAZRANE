@@ -1,3 +1,6 @@
+Dans le makefile il y a deux lois :
+make test permet d'executer les deux premiers exercices et de vérifier leur bon fonctionnement
+
 EXERCICE 1 : OK
 
 EXERCICE 2 : OK
