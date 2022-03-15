@@ -1,7 +1,8 @@
 
 INFORMATION MAKEFILE: Nous avons modifié le Makefile de sorte à simplifier les différents tests pour les différents exos.
-Pour tester les exercices 1 et 2 (pile et file) en même temps, il faut faire "make test" puis "./xmlTest".
-Pour tester les exercices 3, 4, 5 en même temps, il faut faire "make" puis "./xmlChecker".
+Pour tester les exercices 1 et 2 (pile et file) en même temps, il faut faire "make test" puis "./xmlTest". Cela exécute "main_test.c".
+Pour tester les exercices 3, 4, 5 en même temps, il faut faire "make" puis "./xmlChecker". Cela exécute "main.c".
+Vous pouvez toujours changez les fonctions testées directement dans les différents mains si vous le souhaitez.
 
 
 EXERCICE 1:
