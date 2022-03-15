@@ -41,15 +41,15 @@ char* tetePile ( Pile p ){
 void affichePile ( Pile  p ){
 
     Elem_pile* affiche = p;
-    printf("ETAT PILE:\n");
+    printf("La Pile est:\n");
     while(affiche){               //tant que sommet non vide
-        printf("-------\n");
+        printf(" ---- \n");
         printf("| %s |\n",affiche->data); //affiche la valeur contenue dans le sommet
         affiche=affiche->precedent;             //incremente le sommet au sommet suivant
     }
-    printf("-------\n");
     if (affiche==NULL && p==NULL){       //si pile vide
-        printf("LA PILE A ETE VIDEE.\n"); //preuve que la pile à bien été vidée
+        printf(" ---- \n");
+        printf("LA PILE A BIEN ETE DEPILER GG!\n"); //preuve que la pile à bien été vidée
     }
 }
 void freePile( Pile p){

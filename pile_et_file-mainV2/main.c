@@ -67,15 +67,16 @@ int main(int argc, char * argv[])
   {
     usage();
     return EXIT_FAILURE;
-  }
-  
+  } 
+  printf("\n--------EXERCICE 4---------\n");
   printf("\n");
   printf("Balises du fichier '%s':\n",argv[1]);
   fonctionXML(argv[1]); // fonctionXML(char* fichier) affiche toutes les balises du fichier avec tabulations.
   printf("\n");
   printf("Vérification du fichier '%s':\n\n",argv[1]);
   checkXML(argv[1]);
-  //completeSchedule(argv[1]);
+  printf("\n--------EXERCICE 5---------\n\n");
+  completeSchedule(argv[1]);
   //drawGraph(argv[1],stdout);
   return EXIT_SUCCESS;
 }

@@ -53,6 +53,7 @@
    afficheFileStruct(*q,afficheExperiment); 
    experiment_t* d = defileStruct(q); 
    enfileStruct(q,&e4); 
+   printf("New FILE\n");
    afficheFileStruct(*q,afficheExperiment); 
   
    printf(" old head : "); 
@@ -66,8 +67,9 @@
 
 
 int main()
-{
+{ printf("\n--------EXERCICE 1---------\n\n");
   test_pile();
+  printf("\n--------EXERCICE 2---------\n\n");
   printf("FILE:\n");
   test_file_struct_experiment();
   return EXIT_SUCCESS;

@@ -46,7 +46,7 @@ struct_t* defileStruct(QueueS* p)
 {   
     if(estFileStructVide(*p)==1)
         return NULL;
-    Elem_FileStruct* element;
+    Elem_FileStruct* element ;
     element=p->fin;
     while (element->precedent!=p->debut)
     {
@@ -56,7 +56,7 @@ struct_t* defileStruct(QueueS* p)
     Elem_FileStruct* tete_file= tete_file = element->precedent;
     memcpy(tete_file->data->name,element->precedent->data->name,sizeof(struct_t));
     p->debut->precedent=NULL;
-    printf("Tete de file supprimee\n");
+    //printf("Tete de file supprimee\n");
     return tete_file->data;
 
 }

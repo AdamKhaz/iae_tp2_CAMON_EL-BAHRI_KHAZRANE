@@ -44,4 +44,43 @@ QueueS* scheduleStart(char* filename)
   return q;
 }
 
+void completeSchedule(char * filename){
+	QueueS* fileactuelle= creerFileStruct();
+	QueueS* filedepart= scheduleStart(filename);
+	int h;
+	int min;
+	
+	h=((filedepart->debut->data->time)/60);
+	min=((filedepart->debut->data->time)%60);
+	printf("début %dh%.2d ",h, min);
+	afficheExperiment(filedepart->debut->data);
+	enfileStruct(fileactuelle,filedepart->debut->data);
+	defileStruct (filedepart); 
 
+	while(!estFileStructVide(*filedepart)){
+		while(!estFileStructVide(*fileactuelle)){
+			while(((fileactuelle->debut->data->time)+90) < (filedepart->debut->data->time)){
+
+				h=((fileactuelle->debut->data->time)+90)/60;
+				min=((fileactuelle->debut->data->time)+90)%60;
+				printf("fin %dh%.2d ",h, min);
+				afficheExperiment(fileactuelle->debut->data);
+				defileStruct (fileactuelle);
+			}
+			h=((filedepart->debut->data->time)/60);
+			min=((filedepart->debut->data->time)%60);
+			printf("début %dh%.2d ",h, min);
+			afficheExperiment(filedepart->debut->data);
+			enfileStruct(fileactuelle,filedepart->debut->data);
+			defileStruct (filedepart); 
+
+			while(estFileStructVide(*filedepart)&&(!estFileStructVide(*fileactuelle))){
+				h=((fileactuelle->debut->data->time)+90)/60;
+				min=((fileactuelle->debut->data->time)+90)%60;
+				printf("fin %dh%.2d ",h, min);
+				afficheExperiment(fileactuelle->debut->data);
+				defileStruct (fileactuelle);
+			}
+		}
+	}
+}

@@ -1,8 +1,8 @@
 CC=gcc
 CCFLAGS= -Wall -Werror -g 
 LIBFLAGS= 
-SRC= experiment.c file_struct.c pile_char.c xmlReader.c main.c
-SRC_TEST= experiment.c file_struct.c pile_char.c xmlReader.c main_test.c
+SRC= experiment.c file_struct.c pile_char.c xmlReader.c schedule.c main.c
+SRC_TEST= experiment.c file_struct.c pile_char.c main_test.c
 OBJ= $(SRC:.c=.o)
 OBJ_TEST=$(SRC_TEST:.c=.o)
 EXEC= xmlChecker
@@ -22,6 +22,7 @@ $(EXEC2): $(OBJ_TEST)
 
 .depends:
 	$(CC) -MM $(SRC) > .depends
+	$(CC) -MM $(SRC_TEST) > .depends
 
 test: $(OBJ_TEST) 
 	$(CC)  $^ -o $@  $(LIBFLAGS)	
@@ -31,3 +32,4 @@ test: $(OBJ_TEST)
 
 clean:
 	rm -f $(OBJ) $(EXEC) test *.*~
+	rm -f $(OBJ_TEST) $(EXEC2) test *.*~
