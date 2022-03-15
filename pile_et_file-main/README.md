@@ -1,5 +1,6 @@
 Dans le makefile il y a deux lois :
-make test permet d'executer les deux premiers exercices et de vérifier leur bon fonctionnement
+make test permet d'executer les deux premiers exercices et de vérifier leur bon fonctionnement : ./xmlTest
+make permet d'executer tout le reste des exercices à partir de l'exercice 3 : ./xmlChecker [chemindufichier/fichier]
 
 EXERCICE 1 : OK
 
