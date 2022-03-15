@@ -15,20 +15,22 @@ void empile ( Pile* p , char* data ){
     Pile debut= malloc(sizeof(Elem_pile));
     debut->data=data;                         
     debut->precedent= *p;
-    *p=debut;
-    //printf("| %s |\n",p->data);
-                     
+    *p=debut;        
 }
 char* depile(Pile* p){
 
-    if (*p == NULL){                        //si pas de sommet
-        exit(EXIT_FAILURE);                     //le programme s'arrete
-    }
-    Pile elemSuiv=NULL;
-    elemSuiv = (*p)->precedent;                 //notre nouveau sommet va etre égale au prochain sommet de notre sommet courant          
-    free(*p);                               //on désalloue la memoire de notre ancien sommet
-    *p = elemSuiv;
-    return (*p)->data;
+	if (estPileVide(*p) == 0){
+		Pile copie = (*p);
+		char* depile = malloc(sizeof(char*));
+		strcpy(depile,(*p)->data);
+		(*p) = copie->precedent;
+		free(copie);
+		return depile;
+	}
+	else{	
+		printf("LA PILE EST VIDE! \n\n");
+		return "-1";
+	}
 }
 char* tetePile ( Pile p ){
     if(!p){
@@ -40,13 +42,13 @@ void affichePile ( Pile  p ){
 
     Elem_pile* affiche = p;
     printf("La Pile est:\n");
-    while(affiche){              //tant que sommet non vide
-        printf(" ------- \n");
+    while(affiche){               //tant que sommet non vide
+        printf(" ---- \n");
         printf("| %s |\n",affiche->data); //affiche la valeur contenue dans le sommet
         affiche=affiche->precedent;             //incremente le sommet au sommet suivant
     }
     if (affiche==NULL && p==NULL){       //si pile vide
-        printf(" ------- \n");
+        printf(" ---- \n");
         printf("LA PILE A BIEN ETE DEPILER GG!\n"); //preuve que la pile à bien été vidée
     }
 }

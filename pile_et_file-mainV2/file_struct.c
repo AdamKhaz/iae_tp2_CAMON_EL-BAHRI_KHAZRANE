@@ -27,16 +27,16 @@ int estFileStructVide(QueueS p)
 void enfileStruct(QueueS* p, struct_t* data)
 {   
     Elem_FileStruct* element = malloc(sizeof(Elem_FileStruct));
+    element->data = malloc(sizeof(struct_t));
+    *element->data= *data;
     if (p->debut==NULL)
     {
-        element->data=data;
         element->precedent=NULL;
         p->debut=element;
         p->fin=element;
     }
     else 
     {
-        element->data=data;
         element->precedent=p->fin;
         p->fin=element;
     }
@@ -46,16 +46,19 @@ struct_t* defileStruct(QueueS* p)
 {   
     if(estFileStructVide(*p)==1)
         return NULL;
-    Elem_FileStruct* element=p->fin;
+    Elem_FileStruct* element;
+    element=p->fin;
     while (element->precedent!=p->debut)
     {
         element = element->precedent;
     }
     p->debut=element;
-    Elem_FileStruct* tete_file = element->precedent;
+    Elem_FileStruct* tete_file= tete_file = element->precedent;
+    memcpy(tete_file->data->name,element->precedent->data->name,sizeof(struct_t));
     p->debut->precedent=NULL;
     printf("Tete de file supprimee\n");
     return tete_file->data;
+
 }
 
 struct_t teteFileStruct(QueueS p)
@@ -79,7 +82,6 @@ void afficheFileStruct(QueueS p, void (*f)(struct_t*))
         return;
     }
     Elem_FileStruct* element=p.fin;
-    //int position_file=0;
     while(element->precedent!=NULL)
     {
         printf("NOM : %s | TIME : %d\n",element->data->name,element->data->time);
@@ -93,7 +95,6 @@ void freeFileStruct(QueueS* p)
     Elem_FileStruct* Copie=p->debut;
 	while(Copie!=NULL){
 		p->debut=Copie->precedent;
-		//free(Copie->data);
 		free(Copie);
 		Copie=p->debut;
 	}

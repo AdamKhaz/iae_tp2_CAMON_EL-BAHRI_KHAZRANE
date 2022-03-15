@@ -24,7 +24,7 @@
    affichePile(p); 
   
    printf("old head %s new one %s\n",d,tetePile(p)); 
-   //free(d); 
+   free(d); 
    freePile(p); 
   
  } 
@@ -60,7 +60,7 @@
    printf(" new head : "); 
    experiment_t old = teteFileStruct(*q); 
    afficheExperiment(&old); 
-   //free(d); 
+   free(d); 
    freeFileStruct(q); 
  } 
 
