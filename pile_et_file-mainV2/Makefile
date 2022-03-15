@@ -1,8 +1,8 @@
 CC=gcc
 CCFLAGS= -Wall -Werror -g 
 LIBFLAGS= 
-SRC= experiment.c  main_test.c pile_char.c file_struct.c 
-SRC_TEST= xmlReader.c  experiment.c file_struct.c main.c  xmlReader.c
+SRC= main.c xmlReader.c file_struct.c pile_char.c experiment.c schedule.c
+SRC_TEST=  main_test.c file_struct.c pile_char.c xmlReader.c experiment.c 
 OBJ= $(SRC:.c=.o)
 OBJ_TEST=$(SRC_TEST:.c=.o)
 EXEC= xmlChecker
