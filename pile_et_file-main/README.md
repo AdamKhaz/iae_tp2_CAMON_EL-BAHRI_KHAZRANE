@@ -28,3 +28,9 @@ le texte ci-dessous et identifier ce qu’il vous reste à faire :
     fur et à mesure *A compléter*
 
 -   `fichiers_xml/` : Exemples de fichier xml.
+
+
+
+EXERCICE 3 :
+3) La fonction XML renvoie tout ce qui est écrit dans un fichier xml, à l'intérieur des balises.
+Si quelque chose est écrit en dehors de celles-ci, il ne sera pas affiché.
