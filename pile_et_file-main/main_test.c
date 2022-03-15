@@ -1,33 +1,38 @@
 #include "pile_char.h"
 #include "file_struct.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
- void test_pile() 
+
+
+void test_pile() 
  { 
-   // create data
+   // create  data 
    char s1[] = "1"; 
    char s2[] = "2"; 
    char s3[] = "3"; 
    char s4[] = "4"; 
 
-   Pile p = malloc(sizeof(Pile)); 
-   p=NULL;
+   Pile p = NULL; 
    empile(&p,s1); 
    empile(&p,s2); 
    empile(&p,s3); 
-   affichePile(p); 
-   printf("\n");
-   char* d = depile(&p); 
-   empile(&p,s4); 
-   affichePile(p); 
-  
-   printf("old head %s new one %s\n",d,tetePile(p)); 
-   //free(d); 
-   //freePile(p); 
+   affichePile(p);
+   printf("\n"); 
+   char* d1 = depile(&p); //notre "vraie" ancienne tête de pile
+   //depile(&p);                                          //^
+                                                          //|
+   empile(&p,s4);                                         //|
+   affichePile(p);                                        //|
+   printf("\n");                                          //|
+                                                          //|
+   //printf("old head %s new one %s\n",d,tetePile(p)); //si on met d ici, l'ancienne tête retournée ne sera pas la "vraie" ancienne : ce
+                                                       //sera seulement celle qui l'a été après le dépilage de la pile, donc 2
+                                                       //pour avoir la "vraie" ancienne tête (3), il faut donc changer l'appel dans le printf
+   printf("old head %s new one %s\n",d1,tetePile(p));                                                    
+   free(d1); 
+   freePile(p); 
   
  } 
+
 
 
 
@@ -47,28 +52,30 @@
    e4.time = 750; 
    strcpy(e4.name,"Experiment 4"); 
 
-   QueueS* q = creerFileStruct(); 
+   QueueS* q = creerFileStruct(); //cree la file
    enfileStruct(q,&e1); 
    enfileStruct(q,&e2); 
    enfileStruct(q,&e3); 
-   afficheFileStruct(*q,afficheExperiment); 
+   afficheFileStruct(*q,afficheExperiment);
+   printf("\n"); 
    experiment_t* d = defileStruct(q); 
    enfileStruct(q,&e4); 
    afficheFileStruct(*q,afficheExperiment); 
-  
    printf(" old head : "); 
    afficheExperiment(d); 
    printf(" new head : "); 
    experiment_t old = teteFileStruct(*q); 
    afficheExperiment(&old); 
-  // free(d); 
-  // freeFileStruct(q); 
+   free(d);
+   freeFileStruct(q); 
+   
  } 
 
 
 int main()
 {
   test_pile();
-  test_file_struct_experiment();
+  printf("\n");
+  test_file_struct_experiment ();
   return EXIT_SUCCESS;
 }

@@ -29,6 +29,6 @@ char* tetePile ( Pile p ) ;
 void affichePile ( Pile  p ) ;
 
 /* Libère la mémoire */
-void freePile( Pile* p);
+void freePile( Pile p);
 
 # endif
